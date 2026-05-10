@@ -80,7 +80,7 @@ No "contact" card — email is in the footer to avoid repetition.
 
 - `index.html` — single file, inline CSS (replaces existing Drifting-based file)
 - `photo.jpg` — profile photo to be added by user
-- `screenshots/screenshot1-4.png` — Drifting app screenshots (already exist in repo)
+- `screenshots/screenshot1-4.png` — Drifting app screenshots (to be copied from `../drifting/screenshots/` during implementation)
 
 ## Out of Scope
 
