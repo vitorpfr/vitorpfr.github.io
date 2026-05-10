@@ -186,6 +186,27 @@
       color: var(--muted);
       line-height: 1.5;
     }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    footer a:hover { color: var(--text); }
   </style>
 </head>
 <body>
@@ -240,6 +261,17 @@
       </div>
     </div>
   </section>
+
+  <footer>
+    <span>© 2026 Vitor Freitas</span>
+    <span>
+      <a href="https://github.com/vitorpfr" target="_blank" rel="noopener">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/vitorpfreitas/" target="_blank" rel="noopener">LinkedIn</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:hello@vfreitas.com">hello@vfreitas.com</a>
+    </span>
+  </footer>
 
 </body>
 </html>
