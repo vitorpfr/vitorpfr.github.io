@@ -157,6 +157,35 @@
       box-shadow: 0 16px 48px rgba(0,0,0,0.7);
       flex-shrink: 0;
     }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 20px;
+    }
+
+    .about-card-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .about-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
@@ -193,6 +222,24 @@
       <img src="screenshots/screenshot4.png" alt="Drifting Plus" />
     </div>
   </div>
+
+  <section class="section">
+    <p class="section-title">About</p>
+    <div class="about-grid">
+      <div class="about-card">
+        <p class="about-card-label">Where</p>
+        <p>Dublin, Ireland. Senior Engineer &amp; Tech Lead at Toast.</p>
+      </div>
+      <div class="about-card">
+        <p class="about-card-label">Stack</p>
+        <p>Mostly Java, Kotlin, Clojure — open to whatever gets it done</p>
+      </div>
+      <div class="about-card">
+        <p class="about-card-label">Outside work</p>
+        <p>Playing drums and bass, catching live concerts</p>
+      </div>
+    </div>
+  </section>
 
 </body>
 </html>
