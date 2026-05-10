@@ -84,6 +84,79 @@
       height: 22px;
       fill: currentColor;
     }
+
+    /* Shared section wrapper */
+    .section {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    /* Project card */
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 24px;
+    }
+
+    .project-card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .project-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .project-card a {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    .project-card a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Screenshot strip */
+    .screenshots-outer {
+      padding-bottom: 64px;
+    }
+
+    .screenshots {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding: 24px 24px 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .screenshots::-webkit-scrollbar { display: none; }
+
+    .screenshots img {
+      height: 460px;
+      width: auto;
+      border-radius: 28px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.7);
+      flex-shrink: 0;
+    }
   </style>
 </head>
 <body>
@@ -102,6 +175,24 @@
       </a>
     </div>
   </section>
+
+  <section class="section">
+    <p class="section-title">Projects</p>
+    <div class="project-card">
+      <h3>Drifting</h3>
+      <p>An iOS radio app I built. Visualizes music as it plays.</p>
+      <a href="https://github.com/vitorpfr" target="_blank" rel="noopener">GitHub →</a>
+    </div>
+  </section>
+
+  <div class="screenshots-outer">
+    <div class="screenshots">
+      <img src="screenshots/screenshot1.png" alt="Drifting visualization" />
+      <img src="screenshots/screenshot2.png" alt="Drifting Alchemy theme" />
+      <img src="screenshots/screenshot3.png" alt="Drifting saved stations" />
+      <img src="screenshots/screenshot4.png" alt="Drifting Plus" />
+    </div>
+  </div>
 
 </body>
 </html>
