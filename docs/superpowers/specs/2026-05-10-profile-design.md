@@ -37,6 +37,8 @@ One card, same dark surface/border/rounded style as Drifting feature cards:
   - Framed as a personal project, not a shipped product
   - Links to https://github.com/vitorpfr (GitHub profile)
 
+Below the card: a horizontal scrolling strip of phone screenshots (`screenshots/screenshot1-4.png`), same style as the original Drifting page — tall rounded images, horizontal scroll on mobile, centered on desktop.
+
 A second card slot is reserved for **Drifting Web** (a website for the radio app, currently in development). It will be added when ready — no placeholder shown in the initial version.
 
 ### 3. About
@@ -78,6 +80,7 @@ No "contact" card — email is in the footer to avoid repetition.
 
 - `index.html` — single file, inline CSS (replaces existing Drifting-based file)
 - `photo.jpg` — profile photo to be added by user
+- `screenshots/screenshot1-4.png` — Drifting app screenshots (already exist in repo)
 
 ## Out of Scope
 
