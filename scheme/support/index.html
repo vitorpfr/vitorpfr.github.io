@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scheme — Support</title>
+  <meta name="description" content="Support and contact information for Scheme." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080808;
+      --surface: #111111;
+      --border: #222222;
+      --text: #f0f0f0;
+      --muted: #888888;
+      --accent: #a07af0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 36px;
+      margin-bottom: 10px;
+    }
+
+    p, li { font-size: 15px; color: var(--text); margin-bottom: 12px; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-top: 12px;
+    }
+
+    .card p { margin-bottom: 0; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">Scheme</p>
+    <h1>Support</h1>
+
+    <p>
+      Need help with Scheme, found a bug, or have a feature request? The fastest way
+      to reach me is email.
+    </p>
+
+    <div class="card">
+      <p>📧 <a href="mailto:me@vfreitas.com">me@vfreitas.com</a></p>
+    </div>
+
+    <p style="margin-top: 16px;">
+      You can also use <strong>Send Feedback</strong> from inside the app
+      (Settings → About), which opens the same email address pre-filled with your
+      device and app version details to make troubleshooting faster.
+    </p>
+
+    <h2>Common questions</h2>
+    <ul>
+      <li>
+        <strong>Widgets aren't showing the latest data.</strong> iOS refreshes
+        widgets on its own schedule, not instantly. Re-opening Scheme or
+        backgrounding/foregrounding the app helps trigger a refresh sooner.
+      </li>
+      <li>
+        <strong>I bought Scheme Pro on another device — how do I restore it?</strong>
+        Open Settings → Scheme Pro → Restore Purchases. Make sure you're signed into
+        the same Apple ID used for the original purchase.
+      </li>
+      <li>
+        <strong>An app I tapped on the launcher widget didn't open.</strong> Some
+        apps don't support being opened this way, or may need to be reinstalled —
+        try removing and re-adding the app from the picker.
+      </li>
+    </ul>
+
+    <footer>
+      <a href="/scheme/privacy">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/">vfreitas.com</a>
+    </footer>
+  </div>
+</body>
+</html>
