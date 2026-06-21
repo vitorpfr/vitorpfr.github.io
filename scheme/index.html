@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scheme — Themes &amp; Widgets for your Home Screen</title>
+  <meta name="description" content="Theme your entire iPhone Home Screen — widgets, wallpaper, and fonts that all match, in 16 hand-tuned color themes. Minimal, developer-favorite, free to start." />
+  <meta property="og:title" content="Scheme — Themes &amp; Widgets" />
+  <meta property="og:description" content="Your whole Home Screen, one coordinated look. Widgets, wallpaper, and fonts that all match." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Scheme theme palette (base16) */
+    :root {
+      --bg: #282d29;        /* base00 */
+      --surface: #313732;   /* base01 */
+      --surface2: #3c443d;  /* base02 */
+      --border: #3c443d;    /* base02 */
+      --text: #eef2ec;      /* base07 */
+      --text-dim: #c5cfc6;  /* base05 */
+      --muted: #8a9690;     /* base04 */
+      --gold: #f2bc4f;      /* base0A — signature */
+      --coral: #f06a6a;     /* base08 */
+      --green: #a0d864;     /* base0B */
+      --blue: #66b2ef;      /* base0D */
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 88px 24px 56px;
+    }
+
+    .app-icon {
+      width: 92px;
+      height: 92px;
+      border-radius: 21px;
+      box-shadow: 0 10px 36px rgba(0,0,0,0.5);
+      margin-bottom: 26px;
+      display: block;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+    }
+
+    .hero .tagline {
+      font-size: 18px;
+      color: var(--text-dim);
+      max-width: 480px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .badge {
+      display: inline-block;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 11px 22px;
+      border-radius: 100px;
+    }
+    .badge .dot { color: var(--green); }
+    .hero .platform { font-size: 12px; color: var(--muted); margin-top: 14px; }
+
+    /* Widget showcase */
+    .showcase {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 8px 24px 72px;
+    }
+    .widget {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px 20px;
+      width: 200px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      text-align: left;
+    }
+    .widget .prompt { color: var(--gold); font-size: 13px; margin-bottom: 12px; }
+    .widget .row { font-size: 14px; color: var(--text-dim); padding: 2px 0; }
+    .widget .attr { font-size: 11px; color: var(--muted); margin-top: 10px; }
+    .widget .row b { color: var(--text); font-weight: 400; }
+    .widget .note { font-size: 14px; color: var(--text-dim); line-height: 1.5; }
+    .widget .note .check { color: var(--green); }
+
+    /* Sections */
+    section.block { padding: 0 0 76px; }
+    h2 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 26px;
+      text-align: center;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .feature {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+    }
+    .feature .glyph { font-size: 18px; color: var(--gold); margin-bottom: 10px; }
+    .feature h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .feature p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* Pricing */
+    .price-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+    }
+    .price-card .free {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      padding-bottom: 22px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+    }
+    .price-card .free b { color: var(--green); font-weight: 700; }
+    .price-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 16px; }
+    .plan-list { list-style: none; }
+    .plan-list li {
+      font-size: 15px;
+      color: var(--text-dim);
+      padding: 8px 0;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .plan-list li::before { content: "$"; color: var(--gold); flex-shrink: 0; }
+    .plan-list li b { color: var(--text); font-weight: 700; }
+    .price-card .fineprint { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+    footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 64px 24px 44px; }
+      .hero h1 { font-size: 38px; }
+      .hero .tagline { font-size: 16px; }
+      .feature-list { grid-template-columns: 1fr; }
+      .widget { width: 100%; max-width: 280px; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <img class="app-icon" src="icon.png" alt="Scheme app icon" width="92" height="92" />
+    <h1>Scheme</h1>
+    <p class="tagline">Theme your entire Home Screen — widgets, wallpaper, and fonts that all match.</p>
+    <!-- After App Store approval, swap this badge for: <a class="badge" href="APP_STORE_URL">Download on the App Store →</a> -->
+    <span class="badge"><span class="dot">●</span>&nbsp; Coming soon to the App Store</span>
+    <p class="platform">iPhone · iOS 17 or later</p>
+  </section>
+
+  <section class="showcase">
+    <div class="widget">
+      <div class="prompt">$ weather</div>
+      <div class="row"><b>San Francisco</b></div>
+      <div class="row">18° Partly Cloudy</div>
+      <div class="row">H:21° L:12°</div>
+      <div class="attr"># Apple Weather</div>
+    </div>
+    <div class="widget">
+      <div class="prompt">$ apps</div>
+      <div class="row">&gt; <b>Messages</b></div>
+      <div class="row">&gt; <b>Mail</b></div>
+      <div class="row">&gt; <b>Camera</b></div>
+    </div>
+    <div class="widget">
+      <div class="prompt">$ scratchpad</div>
+      <div class="note">ship the App Store build <span class="check">✓</span><br>buy more coffee</div>
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="block">
+      <h2>One look, your whole Home Screen</h2>
+      <div class="feature-list">
+        <div class="feature">
+          <div class="glyph">◆</div>
+          <h3>Themes that match everything</h3>
+          <p>16 hand-tuned color themes, light and dark. Pick one and your widgets, wallpaper, and fonts all follow it — nothing clashes.</p>
+        </div>
+        <div class="feature">
+          <div class="glyph">▤</div>
+          <h3>Terminal-style widgets</h3>
+          <p>Apps, Clock, Calendar, Reminders, Scratchpad, and Weather — a clean monospace look, in multiple sizes.</p>
+        </div>
+        <div class="feature">
+          <div class="glyph">▦</div>
+          <h3>Wallpapers, generated for you</h3>
+          <p>Make a matching wallpaper in a range of styles, sized for your device and saved to Photos — ready to set in a couple of taps.</p>
+        </div>
+        <div class="feature">
+          <div class="glyph">$_</div>
+          <h3>Developer-favorite fonts</h3>
+          <p>Seven fonts, including JetBrains Mono, Fira Code, and IBM Plex Mono — the ones that make a Home Screen feel like your setup.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Pricing</h2>
+      <div class="price-card">
+        <p class="free"><b>Free to start</b> — no account, no trial needed: 6 themes, the Apps, Clock, and Scratchpad widgets, 3 wallpaper styles, and 3 fonts.</p>
+        <h3>Scheme Pro unlocks everything</h3>
+        <ul class="plan-list">
+          <li><b>Yearly — $14.99</b>, with a 7-day free trial</li>
+          <li><b>Lifetime — $29.99</b>, pay once, yours forever</li>
+        </ul>
+        <p class="fineprint">All 16 themes · Calendar, Reminders &amp; Weather widgets · the large Apps widget · every wallpaper style and font. Family Sharing on both plans.</p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <span>© 2026 Vitor Freitas</span>
+    <span>
+      <a href="/scheme/privacy">Privacy Policy</a>
+      &nbsp;·&nbsp;
+      <a href="/scheme/support">Support</a>
+      &nbsp;·&nbsp;
+      <a href="/">vfreitas.com</a>
+    </span>
+  </footer>
+
+</body>
+</html>
