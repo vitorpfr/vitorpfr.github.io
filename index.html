@@ -133,30 +133,70 @@
       text-underline-offset: 3px;
     }
 
-    /* Screenshot strip */
-    .screenshots-outer {
-      padding-bottom: 64px;
+    /* Action row: official App Store badge alongside a text link */
+    .card-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 14px;
     }
 
-    .screenshots {
+    .card-actions a { margin-top: 0; }
+
+    .store-badge { line-height: 0; }
+    .store-badge:hover { text-decoration: none; opacity: 0.85; }
+
+    .store-badge img {
+      display: block;
+      height: 40px;
+      width: auto;
+    }
+
+    /* Screenshot strip — lives inside its project card, bleeding to the card edges
+       and scrolling horizontally so the shots stay full size. */
+    .shots-wrap {
+      position: relative;
+      margin: 18px -24px -20px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Fade on the right edge, hinting there's more to scroll */
+    .shots-wrap::after {
+      content: "";
+      position: absolute;
+      top: 1px;
+      right: 0;
+      bottom: 0;
+      width: 56px;
+      pointer-events: none;
+      border-radius: 0 0 16px 0;
+      background: linear-gradient(to right, rgba(17,17,17,0), var(--surface));
+    }
+
+    .project-shots {
       display: flex;
-      justify-content: center;
       gap: 16px;
-      padding: 24px 24px 0;
+      padding: 18px 24px 20px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+      scroll-snap-type: x proximity;
     }
 
-    .screenshots::-webkit-scrollbar { display: none; }
+    .project-shots::-webkit-scrollbar { display: none; }
 
-    .screenshots img {
+    .project-shots img {
       height: 460px;
       width: auto;
-      border-radius: 28px;
+      border-radius: 24px;
       box-shadow: 0 16px 48px rgba(0,0,0,0.7);
       flex-shrink: 0;
+      scroll-snap-align: start;
     }
+
+    /* Cards stack, so they need breathing room between them */
+    .project-card + .project-card { margin-top: 16px; }
 
     /* About */
     .about-grid {
@@ -211,7 +251,7 @@
     @media (max-width: 600px) {
       .hero h1 { font-size: 36px; }
       .hero-tagline { font-size: 17px; }
-      .screenshots img { height: 360px; border-radius: 22px; }
+      .project-shots img { height: 360px; border-radius: 20px; }
       .about-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -235,22 +275,41 @@
 
   <section class="section">
     <p class="section-title">Personal Projects</p>
+
+    <div class="project-card">
+      <h3>Scheme</h3>
+      <p>An iOS app for theming your home screen. Terminal-style widgets — weather, agenda, reminders, a scratchpad, an app launcher — in coordinated color themes, with matching wallpapers to tie it together. Built in SwiftUI and WidgetKit.</p>
+      <div class="card-actions">
+        <a class="store-badge" href="https://apps.apple.com/app/id6782479402" target="_blank" rel="noopener">
+          <img src="app-store-badge.svg" alt="Download Scheme on the App Store" width="120" height="40" />
+        </a>
+        <a href="/scheme">Learn more →</a>
+      </div>
+      <div class="shots-wrap">
+        <div class="project-shots">
+          <img src="screenshots/scheme/1.png" alt="Scheme home screen with weather, agenda, reminders and scratchpad widgets in a dark purple theme" />
+          <img src="screenshots/scheme/2.png" alt="Scheme home screen with clock and app launcher widgets in a dark green theme" />
+          <img src="screenshots/scheme/3.png" alt="Scheme home screen with weather, scratchpad and app launcher widgets in a light cream theme" />
+          <img src="screenshots/scheme/4.png" alt="Scheme's Themes tab: a live preview, wallpaper style picker and the theme library" />
+        </div>
+      </div>
+    </div>
+
     <div class="project-card">
       <h3>Spectrale</h3>
       <p>A web radio app that visualizes music as it plays. Streams stations from around the world with audio-reactive WebGL visuals. No account, no install — runs in the browser.</p>
       <a href="https://spectrale.app" target="_blank" rel="noopener">Try spectrale.app →</a>
       <a href="https://github.com/vitorpfr/spectrale" target="_blank" rel="noopener" style="margin-left: 16px;">GitHub →</a>
+      <div class="shots-wrap">
+        <div class="project-shots">
+          <img src="screenshots/screenshot1.png" alt="Spectrale playing a station with audio-reactive visualization" />
+          <img src="screenshots/screenshot2.png" alt="Spectrale visualization in a different color" />
+          <img src="screenshots/screenshot3.png" alt="Spectrale saved stations shelf" />
+          <img src="screenshots/screenshot4.png" alt="Spectrale station info and controls" />
+        </div>
+      </div>
     </div>
   </section>
-
-  <div class="screenshots-outer">
-    <div class="screenshots">
-      <img src="screenshots/screenshot1.png" alt="Spectrale playing a station with audio-reactive visualization" />
-      <img src="screenshots/screenshot2.png" alt="Spectrale visualization in a different color" />
-      <img src="screenshots/screenshot3.png" alt="Spectrale saved stations shelf" />
-      <img src="screenshots/screenshot4.png" alt="Spectrale station info and controls" />
-    </div>
-  </div>
 
   <section class="section">
     <p class="section-title">About</p>
