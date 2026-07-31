@@ -80,17 +80,14 @@
       line-height: 1.6;
     }
 
+    /* Official Apple App Store badge — artwork must be used unmodified */
     .badge {
       display: inline-block;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 500;
-      padding: 11px 22px;
-      border-radius: 100px;
+      line-height: 0;
+      transition: opacity 0.2s, transform 0.2s;
     }
-    .badge .dot { color: var(--green); }
+    .badge img { display: block; height: 48px; width: auto; }
+    .badge:hover { opacity: 0.85; transform: translateY(-1px); }
     .hero .platform { font-size: 12px; color: var(--muted); margin-top: 14px; }
 
     /* Widget showcase */
@@ -205,8 +202,9 @@
     <img class="app-icon" src="icon.png" alt="Scheme app icon" width="92" height="92" />
     <h1>Scheme</h1>
     <p class="tagline">Theme your entire Home Screen — widgets, wallpaper, and fonts that all match.</p>
-    <!-- After App Store approval, swap this badge for: <a class="badge" href="APP_STORE_URL">Download on the App Store →</a> -->
-    <span class="badge"><span class="dot">●</span>&nbsp; Coming soon to the App Store</span>
+    <a class="badge" href="https://apps.apple.com/app/id6782479402" target="_blank" rel="noopener">
+      <img src="app-store-badge.svg" alt="Download Scheme on the App Store" width="144" height="48" />
+    </a>
     <p class="platform">iPhone · iOS 17 or later</p>
   </section>
 
