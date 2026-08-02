@@ -16,9 +16,9 @@
       --bg: #0F1618;        /* record black, cooled toward the teal tile */
       --surface: #172124;
       --border: #263133;
-      --text: #F5F0E6;      /* tonearm cream */
+      --text: #F5F0E6;      /* record-label cream */
       --muted: #8FA3A0;
-      --accent: #E0A44A;    /* record-label amber */
+      --accent: #4FC3BA;    /* brand teal, brightened for links on dark */
       --teal: #2FA69E;      /* brand teal, lifted for legibility on dark */
     }
 
@@ -72,8 +72,8 @@
 
     strong { font-weight: 400; color: var(--accent); }
 
-    /* UI paths read as interface, not emphasis — keeps the amber for question leads. */
-    .path { color: var(--teal); }
+    /* UI paths read as interface, not emphasis, so they don't compete with question leads. */
+    .path { color: #C9C2B4; }
 
     .card {
       background: var(--surface);
@@ -136,10 +136,9 @@
         Spindle's own paid unlock either.
       </li>
       <li>
-        <strong>iOS asked to change my app icon.</strong> That's expected. Each theme
-        carries its own home-screen icon, so choosing a theme changes the icon to match —
-        and iOS always shows a confirmation when any app changes its icon. It only happens
-        when you pick a theme, never on its own and never when you simply open the app.
+        <strong>Can I change the app icon?</strong> No — Spindle has one icon and keeps it.
+        Themes restyle the player itself, but the home-screen icon stays put, so the app
+        always looks the same where you go to find it.
       </li>
       <li>
         <strong>I bought Spindle Pro on another device — how do I restore it?</strong> Open
