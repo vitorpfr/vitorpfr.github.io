@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pocket Stereo — A focused music player for iPhone</title>
+  <meta name="description" content="A single-purpose music player for iPhone. Spin a record to browse your library, and listen without getting pulled into everything else on your phone. Apple Music and your own library." />
+  <meta property="og:title" content="Pocket Stereo — A focused music player" />
+  <meta property="og:description" content="Spin a record to browse your music. One app that does one thing, without the pull of everything else on your phone." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Pocket Stereo's own palette, taken from the icon spec in tools/IconGen/generate.swift */
+    :root {
+      --bg: #0F1618;        /* record black, cooled toward the teal tile */
+      --surface: #172124;
+      --border: #263133;
+      --text: #F5F0E6;      /* record-label cream */
+      --text-dim: #CBD6D2;
+      --muted: #8FA3A0;
+      --accent: #4FC3BA;    /* brand teal, brightened for links on dark */
+      --teal: #2FA69E;      /* brand teal, lifted for legibility on dark */
+      --teal-deep: #12857F;
+    }
+
+    /* Keep comments between rules, never inside a declaration block. */
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    .serif { font-family: "Spectral", Georgia, serif; }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 88px 24px 48px;
+    }
+
+    .app-icon {
+      width: 92px;
+      height: 92px;
+      border-radius: 21px;
+      box-shadow: 0 10px 36px rgba(0,0,0,0.55);
+      margin-bottom: 26px;
+      display: block;
+    }
+
+    .hero h1 {
+      font-family: "Spectral", Georgia, serif;
+      font-size: 46px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+
+    .hero .tagline {
+      font-size: 18px;
+      color: var(--text-dim);
+      max-width: 480px;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .hero .platform { font-size: 12px; color: var(--muted); }
+
+    .soon {
+      display: inline-block;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 18px;
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+    }
+
+    /* Player showcase — the deck, drawn in CSS */
+    .showcase { display: flex; justify-content: center; padding: 8px 24px 76px; }
+
+    .deck {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 22px;
+      width: 268px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+    }
+
+    .lcd {
+      background: #0C1315;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 0 14px;
+      margin-bottom: 20px;
+    }
+
+    .lcd .title {
+      font-family: "Spectral", Georgia, serif;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-align: center;
+      color: var(--text);
+      padding-bottom: 9px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 8px;
+    }
+
+    .lcd .item { font-size: 13px; color: var(--text-dim); padding: 3px 14px; }
+    .lcd .item.on { background: var(--teal-deep); color: #fff; }
+
+    .platter {
+      width: 168px;
+      height: 168px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background:
+        repeating-radial-gradient(circle at 50% 50%,
+          rgba(245,240,230,0.055) 0 1px,
+          transparent 1px 7px),
+        radial-gradient(circle at 50% 50%, #1E282B 0%, #141C1E 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 30px rgba(0,0,0,0.55);
+    }
+
+    .label {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #EFEAE0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .label span { width: 6px; height: 6px; border-radius: 50%; background: #0B3F3C; }
+
+    .transport {
+      display: flex;
+      justify-content: center;
+      gap: 34px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Sections */
+    section.block { padding: 0 0 76px; }
+
+    h2 {
+      font-family: "Spectral", Georgia, serif;
+      font-size: 27px;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .block > p.sub {
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .feature .glyph {
+      color: var(--teal);
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .feature h3 {
+      font-family: "Spectral", Georgia, serif;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      margin-bottom: 6px;
+    }
+
+    .feature p { font-size: 15px; color: var(--text-dim); }
+
+    .price-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px 28px;
+    }
+
+    .price-card .free { font-size: 15px; color: var(--text-dim); margin-bottom: 20px; }
+    .price-card b { font-weight: 400; color: var(--accent); }
+
+    .price-card h3 {
+      font-family: "Spectral", Georgia, serif;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .plan-list { list-style: none; margin-bottom: 14px; }
+    .plan-list li { font-size: 15px; color: var(--text-dim); padding: 3px 0; }
+
+    .fineprint { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer a { text-decoration: underline; text-underline-offset: 3px; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 520px) {
+      .hero h1 { font-size: 38px; }
+      .hero { padding-top: 64px; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <img class="app-icon" src="icon.png" alt="Pocket Stereo app icon" width="92" height="92" />
+    <h1>Pocket Stereo</h1>
+    <p class="tagline">A music player that does one thing. Spin a record to browse your library, and listen without getting pulled into everything else on your phone.</p>
+    <span class="soon">Coming soon to the App Store</span>
+    <p class="platform">iPhone · iOS 17 or later</p>
+  </section>
+
+  <section class="showcase">
+    <div class="deck">
+      <div class="lcd">
+        <div class="title">Pocket Stereo</div>
+        <div class="item">Playlists</div>
+        <div class="item on">Albums</div>
+        <div class="item">Songs</div>
+        <div class="item">Themes</div>
+      </div>
+      <div class="platter"><div class="label"><span></span></div></div>
+      <div class="transport">◀◀ &nbsp; ▶ &nbsp; ▶▶</div>
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="block">
+      <h2>Music, and nothing else</h2>
+      <p class="sub">The whole point is what it doesn't do.</p>
+      <div class="feature-list">
+        <div class="feature">
+          <div class="glyph">◎</div>
+          <h3>A record you actually spin</h3>
+          <p>Drag around the platter to move through your library, with a haptic tick for every step. Tap the label at the centre to choose. It's a deliberate, physical way to pick music — not another scrolling list.</p>
+        </div>
+        <div class="feature">
+          <div class="glyph">◐</div>
+          <h3>Focus mode</h3>
+          <p>Full screen, no system clutter, its own battery readout. Put the phone down and let the album play. Focus is free, and always will be.</p>
+        </div>
+        <div class="feature">
+          <div class="glyph">♫</div>
+          <h3>Your music, wherever it lives</h3>
+          <p>Apple Music and the songs already on your iPhone, together or filtered to one source. Pocket Stereo tells you exactly what it found from each, so nothing feels missing.</p>
+        </div>
+        <div class="feature">
+          <div class="glyph">◈</div>
+          <h3>Four ways to look</h3>
+          <p>Turntable and Minimal are free; Mono and Retro come with Pro. Each one restyles the whole player — palette, type, and the feel of the controls — not just its colour.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Pricing</h2>
+      <p class="sub">No subscriptions, ever.</p>
+      <div class="price-card">
+        <p class="free"><b>Free to start</b> — no account and no trial: full playback of your whole library, the Turntable and Minimal themes, and focus mode. Playing music is never behind a paywall.</p>
+        <h3>Pocket Stereo Pro unlocks the rest</h3>
+        <ul class="plan-list">
+          <li><b>$6.99 once</b> — yours forever, no subscription</li>
+        </ul>
+        <p class="fineprint">The Mono and Retro themes · custom colors · custom click sounds &amp; haptics · focus scheduling · focus stats &amp; streaks · every future theme included.</p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <span>© 2026 Vitor Freitas</span>
+    <span>
+      <a href="/pocketstereo/privacy">Privacy Policy</a>
+      &nbsp;·&nbsp;
+      <a href="/pocketstereo/support">Support</a>
+      &nbsp;·&nbsp;
+      <a href="/">vfreitas.com</a>
+    </span>
+  </footer>
+
+</body>
+</html>
